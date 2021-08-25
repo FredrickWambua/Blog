@@ -25,3 +25,4 @@ class RegistrationForm(FlaskForm):
     def validate_username(self,datafield):
         if User.query.filter_by(name = datafield.data).first():
             raise ValidationError('The user already exists')
+
