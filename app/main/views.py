@@ -82,3 +82,9 @@ def new_blog():
         return redirect(url_for('main.index'))
         flash('You Posted a new Blog')
     return render_template('newblog.html', form = form)
+
+@main.route('/blog/<id>')
+def blog(id):
+    comments = Comment.query.filter_by(blog_id=id).all()
+    blog = Blog.query.get(id)
+    return render_template('blog.html',blog=blog,comments=comments)
