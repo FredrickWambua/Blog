@@ -12,3 +12,8 @@ class UpdateProfile(FlaskForm):
     bio = TextAreaField('Write a brief bio about you.',validators = [Required()])
     profile_picture = FileField('profile picture', validators=[FileAllowed(['jpg','png'])])
     submit = SubmitField('Update')
+
+    def validate_email(self,email):
+        if email.data != current_user.email:
+            if User.query.filter_by(email = email.data).first():
+                raise ValidationError("The Email has already been taken!")
