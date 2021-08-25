@@ -2,7 +2,7 @@ import os
 from flask import render_template,redirect,url_for,abort,request,flash
 from app.models import User, Blog, Comment, Subscriber
 from .forms import UpdateProfile, CreateBlog
-from .. import main
+from .import main
 from app.requests import get_quotes
 from flask_login import login_required,current_user
 from ..email import mail_message
