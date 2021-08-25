@@ -64,3 +64,12 @@ class Blog(db.Model):
 
     def __repr__(self):
          return f'Blog {self.title}'
+
+class Comment(db.Model):
+    __tablename__='comments'
+
+    id = db.Column(db.Integer,primary_key = True)
+    comment = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
