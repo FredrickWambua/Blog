@@ -1,6 +1,6 @@
 import os
 from flask import render_template,redirect,url_for,abort,request,flash
-from app.models import User, Blog, Comment
+from app.models import User, Blog, Comment, Subscriber
 from .forms import UpdateProfile, CreateBlog
 from .. import main
 from app.requests import get_quotes
@@ -50,7 +50,10 @@ def profile():
         form.bio.data = current_user.bio
     profile_pic_path = url_for('static',filename = 'photos/'+ current_user.profile_pic_path) 
     return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form)
-    @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
+    
+    
+
+@main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
 @login_required
 def updateprofile(name):
     form = UpdateProfile()
@@ -62,3 +65,20 @@ def updateprofile(name):
         user.save()
         return redirect(url_for('.profile',name = name))
     return render_template('profile/updateprofile.html',form =form)
+
+@main.route('/new_post', methods=['POST','GET'])
+@login_required
+def new_blog():
+    subscribers = Subscriber.query.all()
+    form = CreateBlog()
+    if form.validate_on_submit():
+        title = form.title.data
+        content = form.content.data
+        user_id =  current_user._get_current_object().id
+        blog = Blog(title=title,content=content,user_id=user_id)
+        blog.save()
+        for subscriber in subscribers:
+            mail_message("New Blog Post","email/new_blog",subscriber.email,blog=blog)
+        return redirect(url_for('main.index'))
+        flash('You Posted a new Blog')
+    return render_template('newblog.html', form = form)
