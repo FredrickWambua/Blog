@@ -1,0 +1,9 @@
+Hi {{user.username}};
+
+Thank you for subscribing to Cosmic Traveller for weekly interesting articles curated for you.
+
+Feel free to leave a comment on the articles you read.
+
+
+Best Regards,
+Cosmic Traveller.

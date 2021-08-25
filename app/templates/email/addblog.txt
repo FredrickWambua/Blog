@@ -1,0 +1,8 @@
+Hi family,
+
+You are being notifies of the new blog {{blog.title}}
+
+Check it out.
+
+Thank you,
+Cosmic Traveller

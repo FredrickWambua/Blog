@@ -1,0 +1,2 @@
+Hello {{user.username}}, Welcome to Cosmic Traveller.
+Enjoy the reading of the various blogs of your interests and feel free to leave a comment.
