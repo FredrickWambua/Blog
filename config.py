@@ -1,5 +1,4 @@
 import os
-
 class Config:
     '''
     This is the general configuration parent class
@@ -7,8 +6,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:12345@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY ='199478'
-    UPLOADED_PHOTOS_DEST ='app/static/photos'
-
+    UPLOADED_PHOTOS_DEST='app/static/photos'
     # email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -27,7 +25,7 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with general configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:12345@localhost/blog'
+    pass
     
 
 class DevConfig(Config):
@@ -36,6 +34,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+    pass
 
     DEBUG = True
 
