@@ -26,3 +26,9 @@ def signup():
         mail_message("Welcome to D-Blog","email/welcome",user.email,user=user)
         return  redirect(url_for('auth.login'))
     return render_template('auth/signup.html',registration_form=form )
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("main.index"))
