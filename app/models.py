@@ -19,3 +19,8 @@ class User(UserMixin. db.Model):
     hashed_password = db.Column(db.String(255),nullable = False)
     blog = db.relationship('Blog', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
