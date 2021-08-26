@@ -3,7 +3,7 @@ class Config:
     '''
     This is the general configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:12345@localhost/blog"   
+    
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST='app/static/photos'
     SECRET_KEY='987654321!'
@@ -28,6 +28,9 @@ class ProdConfig(Config):
         Config: The parent configuration class with general configuration settings
     '''
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", "")
+    if SQLALCHEMY_DATABASE_URI.startswith('postgres://'):
+           SQLALCHEMY_DATABASE_URI=SQLALCHEMY_DATABASE_URI.replace('postgres://','postgresql://',1)
     
 
 class DevConfig(Config):
@@ -36,7 +39,8 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:12345@localhost/blog"   
+
 
     DEBUG = True
 
