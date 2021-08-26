@@ -116,7 +116,7 @@ def comment(blog_id):
     new_comment.save()
     return redirect(url_for('main.blog',id = blog.id))
 
-#@main.route('/subscribe',methods = ['POST','GET'])
+@main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():
     email = request.form.get('subscriber')
     new_subscriber = Subscriber(email = email)

@@ -3,7 +3,7 @@ class Config:
     '''
     This is the general configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:12345@localhost/blog'
+    SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://moringa:12345@localhost/blog"   
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST='app/static/photos'
     SECRET_KEY='987654321!'
