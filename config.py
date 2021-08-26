@@ -6,6 +6,9 @@ class Config:
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:12345@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST='app/static/photos'
+    SECRET_KEY='987654321!'
+
+
     # email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587

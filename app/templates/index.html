@@ -23,7 +23,7 @@
                         <img class="rounded-circle blog-img mr-10" src="{{url_for('static', filename='photos/' + blog.user.profile_pic_path)}} " alt="profile">
                         <p><a href=" {{url_for('main.user_posts', username = blog.user.username)}} "><span> {{blog.user.username | title}} </span></a></p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-8">
                         <p><small>Posted on:{{blog.posted.strftime('%d-%m-%Y')}} </small></p>
                         <h3><a href=" {{url_for('main.blog', id=blog.id)}} ">{{blog.title | upper}} </a></h3>
                         <p> {{blog.content}} </p>
