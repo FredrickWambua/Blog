@@ -23,6 +23,6 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('The account with that email already exists')
 
     def validate_username(self,datafield):
-        if User.query.filter_by(name = datafield.data).first():
+        if User.query.filter_by(username = datafield.data).first():
             raise ValidationError('The user already exists')
 
